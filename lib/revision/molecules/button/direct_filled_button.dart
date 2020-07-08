@@ -53,15 +53,22 @@ class DirectFilledButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Flexible(
-                    child: Text(
-                      text,
-                      style: TextStyle(
-                          fontFamily: fontFamily,
-                          color: Colors.white,
-                          fontSize: fontSize,
-                          fontWeight: fontWeight),
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    child: buttonState == DirectButtonState.Loading
+                        ? Container(
+                            height: 25,
+                            width: 25,
+                            child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    DirectColor.primaryColor)))
+                        : Text(
+                            text,
+                            style: TextStyle(
+                                fontFamily: fontFamily,
+                                color: Colors.white,
+                                fontSize: fontSize,
+                                fontWeight: fontWeight),
+                            overflow: TextOverflow.ellipsis,
+                          ),
                   )
                 ],
               ),
